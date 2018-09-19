@@ -18,7 +18,7 @@
 @property(nonatomic,weak)id<UISNPhotosDelegate> delegate;
 @property(nonatomic,assign)NSInteger maxCount;//最大数量
 @property(nonatomic,assign)NSInteger mediaType;//图片、视频、录音
-
+@property(nonatomic,assign)NSInteger maxSeconds;//最大时长 (秒)
 @end
 @protocol UISNPhotosDelegate<NSObject>
 

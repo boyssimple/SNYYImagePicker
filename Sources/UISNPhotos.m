@@ -55,7 +55,10 @@
     
     options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
     if(self.mediaType){
-        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d and duration < 10",self.mediaType];
+        options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %ld",(long)self.mediaType];
+        if(self.mediaType == IMAGEPICKERVIDEO){
+            options.predicate = [NSPredicate predicateWithFormat:@"mediaType = %ld and duration < %ld",(long)self.mediaType ,(long)self.maxSeconds];
+        }
     }
     
     
@@ -188,7 +191,7 @@
     }
     if(!flag){
         if(self.selects.count >= self.maxCount){
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"最多可选%ld张",(long)self.maxCount] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"最多可选%ld张",self.maxCount] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
             return;
         }
@@ -201,7 +204,7 @@
     }];
     
     
-    self.lbCount.text = [NSString stringWithFormat:@"已选(%ld)",(long)self.selects.count];
+    self.lbCount.text = [NSString stringWithFormat:@"已选(%ld)",self.selects.count];
     if(self.selects.count > 0){
         [self.btnConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.btnConfirm.enabled = TRUE;
@@ -366,7 +369,7 @@
         self.btnSelect.hidden = TRUE;
         self.lbCount.hidden = FALSE;
         
-        self.lbCount.text = [NSString stringWithFormat:@"%ld",(long)index];
+        self.lbCount.text = [NSString stringWithFormat:@"%ld",index];
     }else{
         self.btnSelect.hidden = FALSE;
         self.lbCount.hidden = TRUE;

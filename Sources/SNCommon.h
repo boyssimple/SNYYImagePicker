@@ -12,4 +12,11 @@
 #define YYRATIO_WIDHT750 [UIScreen mainScreen].bounds.size.width/375.0
 #define YYRATIO_HEIGHT750 [UIScreen mainScreen].bounds.size.height/667.0
 
+typedef enum : NSUInteger {
+    IMAGEPICKERIMAGE = 1,
+    IMAGEPICKERVIDEO = 2,
+    IMAGEPICKERAUDIO = 3,
+} SNImagePickerTYPE;
+
+
 #endif /* SNCommon_h */

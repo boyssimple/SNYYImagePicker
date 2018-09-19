@@ -47,7 +47,8 @@
     
     UISNPhotos *vc = [[UISNPhotos alloc]init];
     vc.mediaType = self.mediaType;
-    vc.maxCount = self.maxCount; 
+    vc.maxCount = self.maxCount;
+    vc.maxSeconds = self.maxSeconds;
     [self.navigationController pushViewController:vc animated:FALSE];
 }
 
@@ -138,7 +139,7 @@
     }
     SNPhotoAblum *data = [self.dataSource objectAtIndex:indexPath.row];
     cell.lbText.text = data.title;
-    cell.lbCount.text = [NSString stringWithFormat:@"(%ld)",(long)data.count];
+    cell.lbCount.text = [NSString stringWithFormat:@"(%ld)",data.count];
     
     if(data.headImageAsset){
         
