@@ -139,7 +139,7 @@
     }
     SNPhotoAblum *data = [self.dataSource objectAtIndex:indexPath.row];
     cell.lbText.text = data.title;
-    cell.lbCount.text = [NSString stringWithFormat:@"(%ld)",data.count];
+    cell.lbCount.text = [NSString stringWithFormat:@"(%ld)",(long)data.count];
     
     if(data.headImageAsset){
         
